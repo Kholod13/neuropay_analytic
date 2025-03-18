@@ -1,0 +1,1 @@
+export { dashboardBanksAdminApi } from './service';

@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        DOCKER_USER_NAME: $DOCKER_USER_NAME
+        DOCKER_USER_PASSWORD: $DOCKER_USER_PASSWORD
+    env_file:
+      - ./.env
+      - path: ./.env.local
+        required: false
+    ports:
+      - "${PORT}:${PORT}"
+      - "${HMR_PORT}:${HMR_PORT}"
+    volumes:
+      - .:/frontend/app

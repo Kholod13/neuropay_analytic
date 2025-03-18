@@ -1,0 +1,1 @@
+export { dashboardUsersAdminApi } from './service';

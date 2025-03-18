@@ -1,0 +1,1 @@
+export const DEFAULT_MIN_LOADING_DURATION = 200;

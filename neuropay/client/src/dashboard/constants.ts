@@ -1,0 +1,1 @@
+export const USER_BALANCE_CURRENCY = "USDT";

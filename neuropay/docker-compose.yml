@@ -1,0 +1,12 @@
+services:
+  app:
+    image: python:3.13.0-bookworm
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+      - path: ./.env.local
+        required: false
+    ports:
+      - "${PORT}:${PORT}"

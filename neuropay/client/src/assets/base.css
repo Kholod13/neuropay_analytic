@@ -1,0 +1,46 @@
+html,
+body {
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+}
+
+.break-all {
+    word-break: break-all;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
