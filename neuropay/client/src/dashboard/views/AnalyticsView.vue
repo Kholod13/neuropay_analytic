@@ -1,3 +1,5 @@
+
+
 <template>
     <page-layout>
         <content-container>
@@ -17,26 +19,26 @@
             <div class="items-block">
                 <div class="item">
                     <h3>Всего сделок</h3>
-                    <p>0</p>
+                    <p>{{ analyticsData.payIn.totalDeals }}</p>
                     <div class="deals-block">
                         <div class="row">
                             <p>Подтвержденных</p>
-                            <p class="value">0</p>
+                            <p class="value">{{ analyticsData.payIn.confirmedDeals }}</p>
                         </div>
                         <div class="row">
                             <p>Отмененных</p>
-                            <p class="value">0</p>
+                            <p class="value">{{ analyticsData.payIn.canceledDeals }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <h3>Pay-In доход</h3>
-                    <p class="value">000</p>
+                    <p class="value">{{ analyticsData.payIn.revenue }}</p>
                 </div>
                 <div class="item">
                     <h3>Сумма обработанного трафика</h3>
                     <div class="value-block">
-                        <p class="value">000</p>
+                        <p class="value">{{ analyticsData.payIn.traffic }}</p>
                     </div>
                 </div>
             </div>
@@ -44,31 +46,31 @@
             <div class="items-block">
                 <div class="item">
                     <h3>Всего сделок</h3>
-                    <p>12 344 344</p>
+                    <p>{{ analyticsData.payOut.totalDeals }}</p>
                     <div class="deals-block">
                         <div class="row">
                             <p>Подтвержденных</p>
-                            <p class="value">23444</p>
+                            <p class="value">{{ analyticsData.payOut.confirmedDeals }}</p>
                         </div>
                         <div class="row">
                             <p>Отмененных</p>
-                            <p class="value">342</p>
+                            <p class="value">{{ analyticsData.payOut.canceledDeals }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <h3>Pay-Out доход</h3>
-                    <p class="value">12342342324</p>
+                    <p class="value">{{ analyticsData.payOut.revenue }}</p>
                 </div>
                 <div class="item">
                     <h3>Сумма обработанного трафика</h3>
                     <div class="value-block">
-                        <p class="value">23423424</p>
+                        <p class="value">{{ analyticsData.payOut.traffic }}</p>
                     </div>
                 </div>
             </div>
             <div class="total-block">
-                <p>ОБЩАЯ ПРИБЫЛЬ: <span class="value">000</span></p>
+                <p>ОБЩАЯ ПРИБЫЛЬ: <span class="value">{{ totalProfit }}</span></p>
             </div>
         </content-container>
     </page-layout>
@@ -130,6 +132,12 @@ h3{
 .row .value{
     margin: 0px;
 }
+.items-block .item:nth-child(2), .items-block .item:nth-child(1){
+    width: 30%;
+}
+.items-block .item:nth-child(3){
+    width: 40%;
+}
 .items-block .item:nth-child(2), .items-block .item:nth-child(3){
     text-align: center;
     padding: 20px 50px;
@@ -162,6 +170,13 @@ import ContentBody from '@/shared/components/layout/content/ContentBody.vue';
 import AnalyticsFiltersPopover from '@/dashboard/components/analytics/AnalyticsFiltersPopover.vue';
 import { useViewHelper } from '@/shared/components/views/viewHelper';
 import { EButtonType } from '@/shared/components/blocks/form/types';
+import { computed } from 'vue';
+import { useAnalyticsStore } from '@/admin/stores/analyticsStore';
+
+const analyticsStore = useAnalyticsStore();
+const analyticsData = analyticsStore.analyticsData;
+
+const totalProfit = computed(() => analyticsData.payIn.revenue + analyticsData.payOut.revenue);
 
 useViewHelper();
 </script>
